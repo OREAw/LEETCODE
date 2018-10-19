@@ -1,0 +1,35 @@
+#include"mytime.h"
+
+Time::Time()
+{
+	hours = minutes = 0;
+}
+Time::Time(int h, int m)
+{
+	hours = h;
+	minutes = m;
+}
+void Time::Reset(int h, int m)
+{
+	hours = h;
+	minutes = m;
+}
+
+Time Time::operator+(const Time &t) const
+{
+	Time sum;
+	sum.minutes = minutes + t.minutes;
+	sum.hours = hours + t.hours + sum.minutes / 60;
+	sum.minutes %= 60;
+	return sum;
+}
+Time Time::operator*(double mult) const
+{
+	Time result(10,10);
+	return result;
+}
+std::ostream & operator << (std::ostream &os, const Time &t)
+{
+	os << t.hours << "hours, " << t.minutes << "minutes." << endl;
+	return os;
+}
